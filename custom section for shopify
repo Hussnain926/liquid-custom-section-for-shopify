@@ -1,0 +1,283 @@
+<--style start here-->
+
+
+
+.name{
+  padding-left:86px;
+  color:#7A7A7A;
+}
+ .headerr{
+ padding-left:86px;
+   font-size:50px;
+   background:transparent;
+   color:#000;
+   font-weight:900;
+ }
+.rich{
+  width: 80%;
+  color:#000;
+ padding-left:86px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.rich svg{
+  width:20px;
+  height:20px;
+}
+.in-rich{
+padding-bottom: 10px;
+}
+.ico{
+  display:flex;
+  align-items: center;
+}
+.imgo{
+  margin-bottom:30px;
+}
+.btn{
+  padding-left:70px;
+   margin-bottom:30px;
+}
+.btn a{
+  border-radius:5px;
+ 
+  padding:10px 20px;
+  width:fit-content;
+  height:fit-content;
+  background-image: -webkit-linear-gradient(top, #62b11a 0, #408f18 50%, #26770f 50%, #024b0d 100%) !important;  color:#fff;
+
+}
+.botn{
+  display:flex;
+  width:50%;
+  justify-content:space-evenly;
+}
+.param{
+  width:40%;
+ padding-left:86px;
+  margin-bottom:30px;
+}
+
+@media screen and (max-width:1062px){
+  .botn {
+    display: block;
+    width: 83%;
+  }
+  .param {
+    width: 99%;
+  }
+  .rich{
+    display:grid;
+  }
+  .btn {
+    padding-left: 28px;
+  }
+  .headerr{
+ padding-left:8px;
+  }
+  .rich {
+  padding-left:25px;
+  }
+  .param {
+  padding-left:25px;
+  }
+}
+
+
+
+
+
+
+<--style end here-->
+
+
+
+
+<link rel="stylesheet" href="{{ 'inovative.css' | asset_url }}" >
+
+
+<div class="inovative">
+
+<div class="name">
+{{ section.settings.Name }}
+</div>
+<div class="headerr">
+{{ section.settings.Headerr }}
+</div>
+
+<div class="rich">
+  <div class=outer-rich>
+  <div class="in-rich">
+  {% if section.settings.Checkbox  != blank and section.settings.Checkbox != blank %}
+     <div class="ico">
+  {% for rich in section.settings.rich %}
+       {% render 'icon', icon: 'tick'  %}  
+       {{ section.settings.rich }}
+    {% endfor %}
+     </div>
+  {% endif %}
+    </div>
+   <div class="in-rich">
+  {% if section.settings.Checkbox  != blank and section.settings.Checkbox != blank %}
+     <div class="ico">
+  {% for rich in section.settings.richy %}
+       {% render 'icon', icon: 'tick'  %}  
+       {{ section.settings.richy }}
+    {% endfor %}
+     </div>
+  {% endif %}
+    </div>
+</div>
+
+  {% comment %}
+right side   
+  {% endcomment %}
+
+  <div class=outer-rich>
+  <div class="in-rich">
+  {% if section.settings.Checkbox  != blank and section.settings.Checkbox != blank %}
+     <div class="ico">
+  {% for rich in section.settings.richi %}
+       {% render 'icon', icon: 'tick'  %}  
+       {{ section.settings.richi }}
+    {% endfor %}
+     </div>
+  {% endif %}
+    </div>
+   <div class="in-rich">
+  {% if section.settings.Checkbox  != blank and section.settings.Checkbox != blank %}
+     <div class="ico">
+  {% for rich in section.settings.riche %}
+       {% render 'icon', icon: 'tick'  %}  
+       {{ section.settings.riche }}
+    {% endfor %}
+     </div>
+  {% endif %}
+    </div>
+</div>
+<div class="imgo">
+  <img src="{{ section.settings.img | img_url: '350x' }}" />
+</div>
+  </div>
+  <!-- rich end -->
+
+
+  
+  <!-- richtext start -->
+
+  <div class="param">
+   {{ section.settings.rtext }}    
+  </div>
+
+  <!-- richtext end here  -->
+  
+  <!-- button start  -->
+  
+<div class="botn">
+  <div class="btn">
+{% if section.settings.link != blank and section.settings.button_text %}
+  <a href="{{ section.settings.link }}">{{ section.settings.button_text | escape }}</a> 
+    {% endif %}
+  </div>
+  <div class="btn">
+{% if section.settings.link2 != blank and section.settings.button_text1 %}
+  <a href="{{ section.settings.link2 }}">{{ section.settings.button_text1 | escape }}</a> 
+    {% endif %}
+  </div>
+</div>
+  <!-- button end here -->
+  
+</div>
+{% schema %}
+  {
+    "name": "inovative",
+    "settings": [
+      {
+        "type": "text",
+        "id": "Name",
+        "label": "Your Section Name"
+      },
+         
+      {
+        "type": "text",
+        "id": "Headerr",
+        "label": "Add your Heading here",
+        "default":" heading text "
+      },
+      {
+        "type": "checkbox",
+        "id": "Checkbox",
+        "label": "add icons here",
+        "default":true
+      },
+      {
+       "type": "text",
+        "id": "rich",
+        "label": "add your lines",
+        "default":" add some thing here with icons"
+
+      },
+      {
+           "type": "text",
+        "id": "richy",
+        "label": "add your lines",
+        "default":" add some thing here with icons"
+          }
+      ,
+      {
+           "type": "text",
+        "id": "richi",
+        "label": "add your lines",
+        "default":" add some thing here with icons"
+          }
+      ,
+      {
+           "type": "text",
+        "id": "riche",
+        "label": "add your lines",
+        "default":" add some thing here with icons"
+          },
+      {
+        "type": "image_picker",
+        "id": "img",
+        "label": "add img to show "
+      },
+      {
+        "type": "text",
+        "id": "rtext",
+        "label": "Add paragraph",
+        "default":"content"
+      },
+      {
+        "type": "text",
+        "id": "button_text",
+        "label": "Add button",
+        "default":"add text here"
+        
+      },
+  {
+    "type": "url",
+    "id": "link",
+    "label": "Link"
+  },
+      {
+        "type": "text",
+        "id": "button_text1",
+        "label": "Add 2nd Button",
+        "default":"Second Button"
+      },
+      {
+        "type": "url",
+        "id": "link2",
+        "label": "Link2"
+      }
+    ],
+    
+    "presets": [
+      {
+        "name": "Inovative Section"
+      }
+    ]
+  }
+{% endschema %}
